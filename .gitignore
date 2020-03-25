@@ -23,4 +23,8 @@ dist/
 yarn-error.log
 yarn.lock
 
+# test
+coverage
+test/__snapshots__
+
 # End of https://www.gitignore.io/api/vuejs,nuxtjs
