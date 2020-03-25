@@ -34,3 +34,11 @@ Use request from Store
 ```js
   await this.$store.$api[resource][method](payload) // ex: this.$store.$api.user.me({ id: 123 })
 ```
+
+# Environment variable
+
+Create file `.env` at project root or edit `/src/envs.js`
+
+```json
+    API_BASE_URL: 'https://jsonplaceholder.typicode.com/' // Example by https://jsonplaceholder.typicode.com/
+```
