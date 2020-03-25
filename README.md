@@ -39,6 +39,8 @@ Use request from Store
 
 Create file `.env` at project root or edit `/src/envs.js`
 
+_Example by https://jsonplaceholder.typicode.com/_
+
 ```json
-  API_BASE_URL: 'https://jsonplaceholder.typicode.com/' // Example by https://jsonplaceholder.typicode.com/
+  API_BASE_URL: 'https://jsonplaceholder.typicode.com/'
 ```
