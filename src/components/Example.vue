@@ -58,7 +58,8 @@ export default {
   methods: {
     async requestAPI () {
       const id = 1
-      const { data, status } = await this.$api.user.test({ id })
+      const shouldDispatch = false // Default is True - Call the Store after the request
+      const { data, status } = await this.$api.user.test({ id }, shouldDispatch)
 
       if (status === 200) {
         this.resultApi = data
