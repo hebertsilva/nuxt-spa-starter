@@ -1,6 +1,6 @@
 # Nuxt SPA Boilerplate
 
-> Description
+> Boilerplate Nuxt mode SPA with request API from Client
 
 ## Setup
 
