@@ -1,0 +1,112 @@
+/*
+  ## Layout
+*/
+
+@include generate_padding_margins();
+
+@include generate-color-helper();
+
+.clearfix {
+  @include clearfix();
+}
+
+.iblock {
+  @include inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.container {
+  max-width: $breakpoint-large;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/*
+  ## Text
+*/
+
+@each $name, $size in $text-size {
+  .text-#{$name} {
+    font-size: $size;
+  }
+}
+
+.text-default {
+  p {
+    font-size: map-get($text-size, small);
+    line-height: 1.6em;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.line-default {
+	line-height: 1.4em;
+}
+
+.line-medium {
+  line-height: 1.6em;
+}
+
+.text-under {
+  text-decoration: underline;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+.cpointer {
+  cursor: pointer;
+}
+
+/*
+  ## Fonts
+*/
+
+@mixin font($number) {
+  font-family: map-get($fonts-family, $number);
+  font-display: swap;
+}
+
+@each $value, $font in $fonts-family {
+  .font-#{$value} {
+    @include font($value);
+  }
+}
+
+@each $value in $weight {
+  .fw-#{$value} {
+    font-weight: $value;
+  }
+}
