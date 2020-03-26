@@ -1,8 +1,13 @@
 import client from './client'
-import { request } from './config'
+import { api } from './config'
 
 export default async (resource, method, payload = {}) => {
-  const response = await request[resource][method](client(), payload)
+  const request = {
+    payload,
+    config: {}
+  }
+
+  const response = await api[resource][method](client(), request)
 
   return response
 }
