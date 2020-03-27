@@ -25,6 +25,8 @@ $ yarn generate
 
 Use request from API
 
+> Aoós o Request a action é executada, pode ser cancelada passando o parametro na `shouldDispatch`. _Example: await this.$api.[resource][method](payload, shouldDispatch)_
+
 ```js
   const { data, status } = await this.$api.[resource][method](payload) // ex: this.$api.user.me({ id: 123 })
 ```
