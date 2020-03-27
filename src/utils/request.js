@@ -31,28 +31,27 @@ export default async function (
     // Create request client-side
     const response = await client(resource, apiPath, payload)
 
-    if (response.status === 403 && process.client) {
-      this.app.$nuxt.error({ statusCode: 403 })
-      return
+    if (response.status === 403) {
+      return Promise.resolve({ ...response })
+    } else {
+      const data = getData(response)
+      const status = response.status
+
+      // Dispatch request action
+      const dispatchPayload = { payload, response, data }
+      const actionHandler = `${resource}/${method}`
+      if (this.hasActionHandler(actionHandler) && shouldDispatch) {
+        await dispatch(actionHandler, dispatchPayload)
+      }
+
+      if (response.status === 400) {
+        commit('setErrors', { [apiMethod]: data })
+      }
+
+      commit('setRequestDone', apiMethod)
+
+      return Promise.resolve({ data, status })
     }
-
-    const data = getData(response)
-    const status = response.status
-
-    // Dispatch request action
-    const dispatchPayload = { payload, response, data }
-    const actionHandler = `${resource}/${method}`
-    if (this.hasActionHandler(actionHandler) && shouldDispatch) {
-      await dispatch(actionHandler, dispatchPayload)
-    }
-
-    if (response.status === 400) {
-      commit('setErrors', { [apiMethod]: data })
-    }
-
-    commit('setRequestDone', apiMethod)
-
-    return Promise.resolve({ data, status })
   } catch (err) {
     commit('setErrors', { [apiMethod]: err })
   }
