@@ -6,8 +6,6 @@
   },
   "extends": [
     "plugin:vue/recommended",
-    "prettier/babel",
-    "prettier/vue",
     "@nuxtjs"
   ]
 }

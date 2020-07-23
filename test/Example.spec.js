@@ -18,7 +18,7 @@ const factory = () => {
 describe('Example', () => {
   test('mounts properly', () => {
     const wrapper = factory()
-    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.exists()).toBeTruthy()
   })
 
   test('renders properly', () => {

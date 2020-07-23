@@ -16,14 +16,11 @@ function getAPITree () {
     }, {})
 }
 
-const optionsBabel = {
-  useBuiltIns: 'entry',
-  targets: { ie: 11 }
-}
-
 export default {
+  target: 'static',
   mode: 'spa',
   srcDir: 'src',
+  telemetry: false,
   middleware: 'stats',
   head: {
     title: process.env.npm_package_name || '',
@@ -45,7 +42,7 @@ export default {
   },
   router: {
     middleware: 'stats',
-    extendRoutes: (nuxtRoutes, resolve) => {
+    extendRoutes (nuxtRoutes, resolve) {
       nuxtRoutes.splice(0, nuxtRoutes.length, ...routes.map((route) => {
         return {
           ...route,
@@ -96,12 +93,7 @@ export default {
       }
     },
     babel: {
-      babelrc: true,
-      presets ({ isServer }) {
-        return [
-          ['@nuxt/babel-preset-app', optionsBabel]
-        ]
-      }
+      babelrc: true
     }
   }
 }
