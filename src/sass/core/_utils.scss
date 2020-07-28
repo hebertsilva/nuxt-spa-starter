@@ -1,24 +1,33 @@
-/*
-  ## Layout
-*/
+// Mixins
+@mixin container ($name, $value) {
+  .container-#{$name} {
+    max-width: $value;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
 
+// Layout
 @include generate_padding_margins();
 
 @include generate-color-helper();
+
+@include container('medium', $breakpoint-medium);
+@include container('small', $breakpoint-small);
 
 .clearfix {
   @include clearfix();
 }
 
-.iblock {
-  @include inline-block;
-}
-
-.block {
+.display-block {
   display: block;
 }
 
-.none {
+.inline-block {
+  @include inline-block;
+}
+
+.display-none {
   display: none;
 }
 
@@ -30,26 +39,22 @@
 	float: right;
 }
 
-.container {
-  max-width: $breakpoint-large;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/*
-  ## Text
-*/
-
+// Typography
 @each $name, $size in $text-size {
   .text-#{$name} {
     font-size: $size;
   }
 }
 
+@each $value in $weight {
+  .weight-#{$value} {
+    font-weight: $value;
+  }
+}
+
 .text-default {
   p {
-    font-size: map-get($text-size, small);
+    font-size: map-get($text-size, single);
     line-height: 1.6em;
 
     &:not(:last-child) {
@@ -66,16 +71,16 @@
   text-align: right;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .text-italic {
   font-style: italic;
 }
 
 .line-default {
 	line-height: 1.4em;
-}
-
-.line-medium {
-  line-height: 1.6em;
 }
 
 .text-under {
@@ -86,14 +91,7 @@
   text-transform: uppercase;
 }
 
-.cpointer {
-  cursor: pointer;
-}
-
-/*
-  ## Fonts
-*/
-
+// Fonts
 @mixin font($number) {
   font-family: map-get($fonts-family, $number);
   font-display: swap;
@@ -102,11 +100,5 @@
 @each $value, $font in $fonts-family {
   .font-#{$value} {
     @include font($value);
-  }
-}
-
-@each $value in $weight {
-  .fw-#{$value} {
-    font-weight: $value;
   }
 }

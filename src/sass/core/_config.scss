@@ -1,57 +1,46 @@
-/* 
-  ## Config
-*/
-
+// Path images
 $path-image: '~/assets/img/';
 
-/* 
-  ## Colors 
-*/
-
+// Colors
 $palette-colors: (
   white100: #fff,
   black100: #000
 );
 
-/*
-  ## Layout
-*/
-
+// Breakpoints
 $breakpoint-large: 1200px;
+$breakpoint-default: 1080px;
 $breakpoint-medium: 992px;
 $breakpoint-small: 768px;
 
-/*
-  ## Text
-*/
-
+// Text size
 $text-size: (
   title: 26px,
   large: 20px,
   medium: 18px,
   small: 16px,
-  base: 12px
+  base: 14px
 );
 
-/*
-  ## Fonts family
-*/
+// Text weight
+$fonts-weight: 300, 400, 500, 600, 700, 800, 900;
 
+// Fonts family
 $fonts-family: (
   1: ('Montserrat', sans-serif)
 );
 
-$weight: 300, 400, 500, 600, 700, 800, 900;
-
-/*
-  ## Padding / Margin
-*/
-
+// Padding / Margins
 $padding-margin-sizes: (
   0: 0,
+  5: 5px,
   10: 10px,
+  15: 15px,
   20: 20px,
+  25: 25px,
   30: 30px,
+  35: 35px,
   40: 40px,
+  45: 45px,
   50: 50px
 );
