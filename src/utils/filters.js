@@ -14,3 +14,7 @@ export function isObject (obj) {
 
   return hasObject || hasArray
 }
+
+export function isArray (arr) {
+  return Array.isArray(arr)
+}

@@ -67,6 +67,7 @@ export default {
     '~/plugins/api'
   ],
   buildModules: [
+    // empty
   ],
   build: {
     optimizeCSS: true,
