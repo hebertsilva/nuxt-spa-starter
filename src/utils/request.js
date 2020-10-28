@@ -1,20 +1,10 @@
-import client from '~/client'
+import api from '~/api'
 
 // translateMethodToPath converts a string like
 // service.doSomething() to service/do-something, so
 // that it can be picked up by the API middleware in server/index.js
 const translateMethodToPath = (name) => {
   return name.replace(/[A-Z]/g, l => `-${l.toLowerCase()}`).replace(/\./, '/')
-}
-
-// getData returns the results[] array if it's available,
-// otherwise it returns the original JSON response
-export function getData (response) {
-  if (Array.isArray(response.data.results)) {
-    return response.data.results
-  } else {
-    return response.data
-  }
 }
 
 export default async function (
@@ -29,22 +19,21 @@ export default async function (
     const apiPath = translateMethodToPath(method)
 
     // Create request client-side
-    const response = await client(resource, apiPath, payload)
+    const response = await api(resource, apiPath, payload)
 
     if (response.status === 403) {
       return Promise.resolve({ ...response })
     } else {
-      const data = getData(response)
-      const status = response.status
+      const { data, status } = response
 
       // Dispatch request action
-      const dispatchPayload = { payload, response, data }
+      const dispatchPayload = { payload, data, status }
       const actionHandler = `${resource}/${method}`
       if (this.hasActionHandler(actionHandler) && shouldDispatch) {
         await dispatch(actionHandler, dispatchPayload)
       }
 
-      if (response.status === 400) {
+      if (status === 400) {
         commit('setErrors', { [apiMethod]: data })
       }
 

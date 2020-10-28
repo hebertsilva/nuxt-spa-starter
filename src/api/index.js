@@ -20,7 +20,5 @@ function translatePath (path) {
 export default async (resource, method, payload = {}) => {
   method = translatePath(method)
 
-  const response = await api[resource][method](client(), { payload, config: {} })
-
-  return response
+  return await api[resource][method](client(), { payload, config: {} })
 }

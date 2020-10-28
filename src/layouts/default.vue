@@ -11,6 +11,6 @@ export default {
 <style lang="scss">
 html, body {
   @include font(1);
-  color: map-get($palette-colors, black100);
+  color: map-get($colors, black100);
 }
 </style>

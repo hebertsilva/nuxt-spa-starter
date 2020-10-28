@@ -2,7 +2,7 @@
 $path-image: '~/assets/img/';
 
 // Colors
-$palette-colors: (
+$colors: (
   white100: #fff,
   black100: #000
 );
@@ -23,7 +23,7 @@ $text-size: (
 );
 
 // Text weight
-$fonts-weight: 300, 400, 500, 600, 700, 800, 900;
+$weight: 300, 400, 500, 600, 700, 800, 900;
 
 // Fonts family
 $fonts-family: (

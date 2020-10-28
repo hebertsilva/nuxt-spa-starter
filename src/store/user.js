@@ -13,8 +13,8 @@ export const mutations = {
 }
 
 export const actions = {
-  test ({ commit, dispatch, rootState }, { payload, response, data }) {
-    if (response.status === 200) {
+  test ({ commit, dispatch, rootState }, { payload, data, status }) {
+    if (status === 200) {
       commit('updateUser', data)
     }
   }

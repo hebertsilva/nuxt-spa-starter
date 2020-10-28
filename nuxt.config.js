@@ -3,7 +3,7 @@ import routes from './src/pages'
 import envs from './src/envs'
 
 function getAPITree () {
-  const api = require(resolve(__dirname, 'src/client/resources'))
+  const api = require(resolve(__dirname, 'src/api/resources'))
   return Object.keys(api.default)
     .reduce((rObj, resource) => {
       return {
@@ -18,10 +18,9 @@ function getAPITree () {
 
 export default {
   target: 'static',
-  mode: 'spa',
+  ssr: false,
   srcDir: 'src',
   telemetry: false,
-  middleware: 'stats',
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -52,6 +51,7 @@ export default {
     }
   },
   modules: [
+    '@nuxtjs/axios',
     '@nuxtjs/style-resources'
   ],
   styleResources: {
@@ -77,8 +77,8 @@ export default {
     publicPath: envs.PUBLIC_PATH,
     templates: [{
       options: { api: getAPITree() },
-      src: './src/api.js.template',
-      dst: '../src/api.js'
+      src: './src/api/template.js.template',
+      dst: '../src/api/template.js'
     }],
     extend (config, ctx) {
       config.node = {

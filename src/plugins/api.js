@@ -1,6 +1,6 @@
 
 import Vuex from 'vuex'
-import api from '~/api'
+import api from '~/api/template'
 
 // extendStore adds methods to the Vuex Store
 // Works for server and client-side requests

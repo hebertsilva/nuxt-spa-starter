@@ -81,7 +81,7 @@ export default {
 }
 
 .loading {
-  border: 1px solid map-get($palette-colors, black100);
+  border: 1px solid map-get($colors, black100);
   padding: 20px;
 }
 
@@ -90,7 +90,7 @@ h1 {
 }
 
 .result {
-  border: 1px solid map-get($palette-colors, black100);
+  border: 1px solid map-get($colors, black100);
   padding: 20px;
   margin-top: 20px;
 }
